@@ -24,12 +24,16 @@ class ProductsService {
     this.products.push(newProduct);
     return newProduct;
   }
+
   async find() {
+    const name = this.getTotalProducts();
     return this.products;
   }
+
   async findOne(id) {
     return this.products.find((item) => item.id === id);
   }
+
   async update(id, changes) {
     const index = this.products.findIndex((item) => item.id === id);
     if (index === -1) {
@@ -42,6 +46,7 @@ class ProductsService {
     };
     return this.products[index];
   }
+
   async delete(id) {
     const index = this.products.findIndex((item) => item.id === id);
     if (index === -1) {
