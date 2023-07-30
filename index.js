@@ -2,7 +2,11 @@ const express = require('express');
 const routerApi = require('./routes');
 const os = require('os');
 
-const { logErrors, errorHandler } = require('./middleware/error.handler.js');
+const {
+  logErrors,
+  errorHandler,
+  boomErrorHandler,
+} = require('./middleware/error.handler.js');
 
 const IP = os.networkInterfaces().en0[1].address;
 const app = express();
@@ -14,6 +18,7 @@ app.use(express.json());
 routerApi(app);
 
 app.use(logErrors);
+app.use(boomErrorHandler);
 app.use(errorHandler);
 
 app.get('/', (req, res) => res.send('Hello World!'));
