@@ -1,6 +1,7 @@
 const express = require('express');
 const routerApi = require('./routes');
 const os = require('os');
+const cors = require('cors');
 
 const {
   logErrors,
@@ -20,6 +21,7 @@ routerApi(app);
 app.use(logErrors);
 app.use(boomErrorHandler);
 app.use(errorHandler);
+app.use(cors());
 
 app.get('/', (req, res) => res.send('Hello World!'));
 
