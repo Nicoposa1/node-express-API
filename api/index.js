@@ -37,9 +37,10 @@ routerApi(app);
 app.use(logErrors);
 app.use(boomErrorHandler);
 app.use(errorHandler);
-app.use(cors());
+app.use(cors(options));
 
-app.get('/', (req, res) => res.send('Hello World!'));
+app.get('/api', (req, res) => res.send('Hello World!'));
+app.get('/api/nueva-ruta', (req, res) => res.send('Hello this is new route!'));
 
 app.listen(port, () =>
   console.log(`Example app listening at http://${IP}:${port}`)
