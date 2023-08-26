@@ -34,7 +34,7 @@ class ProductsService {
 
   async find() {
     const products = await models.Product.findAll();
-    return products;
+    return products
   }
 
   async findOne(id) {
